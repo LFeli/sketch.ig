@@ -1,10 +1,12 @@
+import '@/styles/globals.css'
+
 import type { Metadata } from 'next'
 
+import { siteConfig } from '@/config/site'
 import { fontMono, fontSans } from '@/lib/font'
 import { cn } from '@/lib/utils'
 
-import '@/styles/globals.css'
-import { siteConfig } from '@/config/site'
+import { Providers } from './providers'
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           'h-full min-h-svh overflow-hidden font-sans antialiased',
@@ -35,7 +37,7 @@ export default function RootLayout({
           fontMono.variable
         )}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
