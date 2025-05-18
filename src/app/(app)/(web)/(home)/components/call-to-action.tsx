@@ -3,12 +3,13 @@
 import Link from 'next/link'
 
 import { DraftingCompassIcon, MoveUpRightIcon } from 'lucide-react'
-import { type Variants, motion } from 'motion/react'
+import { motion } from 'motion/react'
 
 import { BackgroundLines } from '@/components/background-lines'
 import { FlipWords } from '@/components/flip-words'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { animationContainer, animationItem } from '@/constants/animation'
 
 /**
  * A list of phrase pairs to be animated in sequence.
@@ -28,34 +29,13 @@ const gradientStyle = {
   background: 'radial-gradient(50% 68% at 50% 100%, #171717, #ababab00)',
 }
 
-/**
- * Container animation variants controlling stagger and delay of child animations.
- */
-const container: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.3,
-    },
-  },
-}
-
-/**
- * Individual item animation variants for fade-in and upward movement.
- */
-const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-}
-
 export function CallToAction() {
   return (
     <motion.div
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.4 }}
-      variants={container}
+      variants={animationContainer}
     >
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
         <BackgroundLines
@@ -68,21 +48,21 @@ export function CallToAction() {
             className="z-10 size-16 rounded-xl [&>svg]:size-8"
             asChild
           >
-            <motion.span variants={item}>
+            <motion.span variants={animationItem}>
               <DraftingCompassIcon />
             </motion.span>
           </Badge>
 
-          <motion.h2
-            variants={item}
+          <motion.h1
+            variants={animationItem}
             className="relative z-10 bg-gradient-to-b from-neutral-900 to-neutral-700 bg-clip-text text-center font-bold font-sans text-4xl text-transparent leading-tight tracking-tight md:text-5xl lg:text-7xl dark:from-neutral-600 dark:to-white"
           >
             My Space to <br />
             <FlipWords words={flipWords} duration={3000} />
-          </motion.h2>
+          </motion.h1>
 
           <motion.p
-            variants={item}
+            variants={animationItem}
             className="z-10 mx-auto max-w-xl text-center text-neutral-700 text-sm md:text-lg dark:text-neutral-400"
           >
             From tiny components to full flows—this is where I explore ideas
@@ -92,7 +72,7 @@ export function CallToAction() {
 
           {/* Call to action buttons */}
           <motion.div
-            variants={item}
+            variants={animationItem}
             className="z-10 flex items-center gap-2.5 pt-2"
           >
             <Button
