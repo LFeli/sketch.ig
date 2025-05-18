@@ -1,8 +1,9 @@
 'use client'
 
+import { motion } from 'motion/react'
+
 import { linesColors, linesPaths } from '@/constants/background'
 import { cn } from '@/lib/utils'
-import { motion } from 'motion/react'
 
 interface SvgOptions {
   duration?: number
@@ -75,12 +76,7 @@ export function BackgroundLines({
   svgOptions,
 }: BackgroundLinesProps) {
   return (
-    <div
-      className={cn(
-        'h-[20rem] w-full bg-white md:h-screen dark:bg-black',
-        className
-      )}
-    >
+    <div className={cn('h-screen w-full bg-white dark:bg-black', className)}>
       <Svg svgOptions={svgOptions} />
       {children}
     </div>
