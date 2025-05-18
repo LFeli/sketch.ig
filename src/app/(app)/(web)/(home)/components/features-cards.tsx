@@ -72,6 +72,7 @@ export function FeaturesCards() {
         <motion.article
           key={index}
           variants={animationItem}
+          transition={{ delay: index * 0.175, duration: 0.3 }}
           className={cn(
             'group/feature relative flex flex-col border-b py-12 lg:border-r lg:border-b-0 dark:border-neutral-800',
             {

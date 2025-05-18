@@ -46,9 +46,7 @@ export function Features() {
           </motion.p>
         </header>
 
-        <motion.div variants={animationItem} className="w-full">
-          <FeaturesCards />
-        </motion.div>
+        <FeaturesCards />
 
         <footer className="mx-auto max-w-xl pt-8 text-center font-mono text-neutral-700 text-xs lg:text-sm dark:text-neutral-400">
           This space isn't about perfection — it's about iteration.
