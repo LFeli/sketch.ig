@@ -34,7 +34,7 @@ export function CallToAction() {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={animationContainer}
     >
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
