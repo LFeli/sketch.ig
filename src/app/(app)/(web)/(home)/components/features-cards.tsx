@@ -88,7 +88,7 @@ export function FeaturesCards() {
             <div className="pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 to-transparent opacity-0 transition duration-200 group-hover/feature:opacity-100 dark:from-neutral-800" />
           )}
 
-          <div className="space-y-4 px-10">
+          <div className="z-10 space-y-4 px-10">
             {card.icon && (
               <Badge className="z-10 size-10 rounded-xl [&>svg]:size-6">
                 <card.icon />
