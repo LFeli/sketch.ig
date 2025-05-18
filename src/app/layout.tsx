@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'h-full min-h-svh overflow-hidden font-sans antialiased',
+          'h-full min-h-svh font-sans antialiased',
           fontSans.variable,
           fontMono.variable
         )}
