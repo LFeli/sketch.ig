@@ -5,6 +5,7 @@ import { motion } from 'motion/react'
 import { Badge } from '@/components/ui/badge'
 import { animationContainer, animationItem } from '@/constants/animation'
 import { SparklesIcon } from 'lucide-react'
+import { FeaturesCards } from './features-cards'
 
 export function Features() {
   return (
@@ -14,7 +15,7 @@ export function Features() {
       viewport={{ once: true, amount: 0.4 }}
       variants={animationContainer}
     >
-      <section className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden px-4 py-16 lg:py-24">
+      <section className="relative flex min-h-screen flex-col items-center justify-between space-y-4 overflow-hidden px-4 py-16 lg:py-24">
         <header className="flex flex-col items-center justify-center space-y-6">
           {/* tag badge */}
           <Badge
@@ -45,11 +46,12 @@ export function Features() {
           </motion.p>
         </header>
 
-        <article>middle section</article>
+        <motion.div variants={animationItem} className="w-full">
+          <FeaturesCards />
+        </motion.div>
 
-        <footer className="mx-auto max-w-xl text-center text-neutral-700 text-xs lg:text-sm dark:text-neutral-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque quae
-          ipsam beatae blanditiis sed vel vero nihil consectetur expedita.
+        <footer className="mx-auto max-w-xl pt-8 text-center font-mono text-neutral-700 text-xs lg:text-sm dark:text-neutral-400">
+          This space isn't about perfection — it's about iteration.
         </footer>
       </section>
     </motion.div>
