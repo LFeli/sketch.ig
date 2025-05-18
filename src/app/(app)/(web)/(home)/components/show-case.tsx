@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { animationContainer, animationItem } from '@/constants/animation'
 import Link from 'next/link'
+import { ShowCaseBento } from './show-case-bento'
 
 export function Showcase() {
   return (
@@ -22,7 +23,7 @@ export function Showcase() {
       viewport={{ once: true, amount: 0.2 }}
       variants={animationContainer}
     >
-      <section className="relative flex min-h-screen flex-col items-center justify-between space-y-4 overflow-hidden px-4 py-16 lg:py-24">
+      <section className="relative flex min-h-screen flex-col items-center justify-between gap-y-6 space-y-4 overflow-hidden px-4 py-16 lg:py-24">
         <header className="flex flex-col items-center justify-center space-y-6">
           {/* tag badge */}
           <Badge
@@ -53,7 +54,7 @@ export function Showcase() {
           </motion.p>
         </header>
 
-        <div>middle content...</div>
+        <ShowCaseBento />
 
         <motion.footer variants={animationItem}>
           <Button
