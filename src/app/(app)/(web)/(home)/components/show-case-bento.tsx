@@ -48,8 +48,8 @@ const items = [
 
 export function ShowCaseBento() {
   return (
-    <section>
-      <BentoGrid className="mx-auto max-w-4xl md:auto-rows-[20rem]">
+    <section className="w-full">
+      <BentoGrid className="mx-auto w-full max-w-container md:auto-rows-[20rem]">
         {items.map((item, index) => (
           <motion.article
             key={index}

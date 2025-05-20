@@ -67,7 +67,7 @@ const cards: Card[] = [
 
 export function FeaturesCards() {
   return (
-    <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mx-auto grid w-full max-w-container grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {cards.map((card, index) => (
         <motion.article
           key={index}
