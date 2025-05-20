@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { DraftingCompassIcon, MoveUpRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
-import { BackgroundLines } from '@/components/background-lines'
 import { FlipWords } from '@/components/flip-words'
+import { LinesBackground } from '@/components/lines-background'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { animationContainer, animationItem } from '@/constants/animation'
@@ -38,7 +38,7 @@ export function CallToAction() {
       variants={animationContainer}
     >
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
-        <BackgroundLines
+        <LinesBackground
           svgOptions={{ duration: 5 }}
           className="flex w-full flex-col items-center justify-center space-y-4 px-4"
         >
@@ -96,7 +96,7 @@ export function CallToAction() {
               </Link>
             </Button>
           </motion.div>
-        </BackgroundLines>
+        </LinesBackground>
 
         {/* Decorative background element with a radial gradient. */}
         <div
