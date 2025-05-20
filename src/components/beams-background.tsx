@@ -75,10 +75,11 @@ export const BeamsBackground = React.memo(
                   delay: Math.random() * 10,
                 }}
               >
-                <stop stopColor="#18CCFC" stopOpacity="0" />
-                <stop stopColor="#18CCFC" />
-                <stop offset="32.5%" stopColor="#6344F5" />
-                <stop offset="100%" stopColor="#AE48FF" stopOpacity="0" />
+                <stop offset="0%" stopColor="#18CCFC" stopOpacity="0" />
+                <stop offset="15%" stopColor="#00BFFF" />
+                <stop offset="50%" stopColor="#1A9FEF" />
+                <stop offset="85%" stopColor="#1B83D6" />
+                <stop offset="100%" stopColor="#1A6CBF" stopOpacity="0" />
               </motion.linearGradient>
             ))}
 
