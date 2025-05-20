@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 
-import { BackgroundBeams } from '@/components/beams-background'
+import { BeamsBackground } from '@/components/beams-background'
 import { Badge } from '@/components/ui/badge'
 import { animationContainer, animationItem } from '@/constants/animation'
 import { InfinityIcon } from 'lucide-react'
@@ -45,7 +45,7 @@ export function Faq() {
           </motion.p>
         </header>
 
-        <BackgroundBeams />
+        <BeamsBackground />
       </section>
     </motion.div>
   )
