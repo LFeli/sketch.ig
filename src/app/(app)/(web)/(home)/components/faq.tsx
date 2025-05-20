@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react'
 
+import { BackgroundBeams } from '@/components/beams-background'
 import { Badge } from '@/components/ui/badge'
 import { animationContainer, animationItem } from '@/constants/animation'
 import { InfinityIcon } from 'lucide-react'
@@ -15,7 +16,7 @@ export function Faq() {
       variants={animationContainer}
     >
       <section className="relative flex min-h-screen flex-col items-center justify-between space-y-4 overflow-hidden px-4 py-16 lg:py-24">
-        <header className="flex flex-col items-center justify-center space-y-6">
+        <header className="z-10 flex flex-col items-center justify-center space-y-6">
           {/* tag badge */}
           <Badge
             variant={'secondary'}
@@ -43,6 +44,8 @@ export function Faq() {
             chaos behind each sketch and interaction.
           </motion.p>
         </header>
+
+        <BackgroundBeams />
       </section>
     </motion.div>
   )
