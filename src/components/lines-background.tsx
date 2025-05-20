@@ -9,7 +9,7 @@ interface SvgOptions {
   duration?: number
 }
 
-interface BackgroundLinesProps {
+interface LinesBackgroundProps {
   children: React.ReactNode
   className?: string
   svgOptions?: SvgOptions
@@ -70,11 +70,11 @@ function Svg({ svgOptions }: { svgOptions?: SvgOptions }) {
   )
 }
 
-export function BackgroundLines({
+export function LinesBackground({
   children,
   className,
   svgOptions,
-}: BackgroundLinesProps) {
+}: LinesBackgroundProps) {
   return (
     <div className={cn('h-screen w-full bg-white dark:bg-black', className)}>
       <Svg svgOptions={svgOptions} />
