@@ -1,11 +1,13 @@
 'use client'
 
+import { InfinityIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
 import { BeamsBackground } from '@/components/beams-background'
 import { Badge } from '@/components/ui/badge'
+
 import { animationContainer, animationItem } from '@/constants/animation'
-import { InfinityIcon } from 'lucide-react'
+import { FaqCards } from './faq-cards'
 
 export function Faq() {
   return (
@@ -44,6 +46,12 @@ export function Faq() {
             chaos behind each sketch and interaction.
           </motion.p>
         </header>
+
+        <FaqCards />
+
+        <footer className="mx-auto max-w-xl pt-8 text-center font-mono text-neutral-700 text-xs lg:text-sm dark:text-neutral-400">
+          Still curious? This playground is always shifting.
+        </footer>
 
         <BeamsBackground />
       </section>
