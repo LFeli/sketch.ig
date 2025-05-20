@@ -80,6 +80,9 @@
   /* animation */
   --animate-aurora: aurora 60s linear infinite;
 
+  /* max-width */
+  --spacing-container: 1200px;
+
   @keyframes aurora {
     from {
       background-position:
