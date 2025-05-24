@@ -74,8 +74,8 @@
  */
 @theme inline {
   /* colors */
-  --color-eerie-black: #171717
-  --color-silver-chalice: #ababab00
+  --color-eerie-black: #171717;
+  --color-silver-chalice: #ababab00;
 
   /* animation */
   --animate-aurora: aurora 60s linear infinite;
