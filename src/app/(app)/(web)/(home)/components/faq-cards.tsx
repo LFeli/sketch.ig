@@ -1,11 +1,14 @@
 'use client'
 
+import { motion } from 'motion/react'
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { animationItem } from '@/constants/animation'
 
 interface Card {
   title: string
@@ -52,7 +55,10 @@ const cards: Card[] = [
 
 export function FaqCards() {
   return (
-    <div className="z-1 mx-auto mb-0 grid w-full max-w-3xl grid-cols-1 rounded-xl bg-card/50 p-4 px-6 backdrop-blur-sm">
+    <motion.div
+      variants={animationItem}
+      className="z-1 mx-auto mb-0 grid w-full max-w-3xl grid-cols-1 rounded-xl bg-card/50 p-4 px-6 backdrop-blur-sm"
+    >
       <Accordion type="single" collapsible>
         {cards.map((card, index) => (
           <AccordionItem key={index} value={String(index)}>
@@ -66,6 +72,6 @@ export function FaqCards() {
           </AccordionItem>
         ))}
       </Accordion>
-    </div>
+    </motion.div>
   )
 }

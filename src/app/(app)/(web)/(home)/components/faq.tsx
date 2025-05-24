@@ -49,9 +49,12 @@ export function Faq() {
 
         <FaqCards />
 
-        <footer className="mx-auto max-w-xl pt-8 text-center font-mono text-neutral-700 text-xs lg:text-sm dark:text-neutral-400">
+        <motion.footer
+          variants={animationItem}
+          className="mx-auto max-w-xl pt-8 text-center font-mono text-neutral-700 text-xs lg:text-sm dark:text-neutral-400"
+        >
           Still curious? This playground is always shifting.
-        </footer>
+        </motion.footer>
 
         <BeamsBackground />
       </section>
