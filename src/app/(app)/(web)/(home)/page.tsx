@@ -1,3 +1,4 @@
+import { Banner } from './components/banner'
 import { CallToAction } from './components/call-to-action'
 import { Faq } from './components/faq'
 import { Features } from './components/features'
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Features />
       <Showcase />
       <Faq />
+      <Banner />
     </main>
   )
 }
