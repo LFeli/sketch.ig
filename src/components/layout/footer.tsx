@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { DraftingCompassIcon } from 'lucide-react'
 
+import { footerLinks } from '@/config/nav'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
@@ -9,16 +10,6 @@ import { Separator } from '../ui/separator'
 interface LinkListProps {
   title: string
   links: string[]
-}
-
-/**
- * Footer navigation links grouped by section title.
- * Each link has a label and optional href.
- */
-const footerLinks = {
-  Explore: ['Components', 'Animations', 'Utils', 'Patterns'],
-  'Behind sketch.ig': ['About me', 'What is this?', 'GitHub', 'Faq'],
-  'Find me': ['Me', 'Github', 'Linkedin'],
 }
 
 /**

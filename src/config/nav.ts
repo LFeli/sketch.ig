@@ -121,3 +121,13 @@ export const navSite: NavSite = {
   main: mainNav,
   sidebar: sidebarNav,
 }
+
+/**
+ * Footer navigation links grouped by section title.
+ * Each link has a label and optional href.
+ */
+export const footerLinks = {
+  Explore: ['Components', 'Animations', 'Utils', 'Patterns'],
+  'Behind sketch.ig': ['About me', 'What is this?', 'GitHub', 'Faq'],
+  'Find me': ['Me', 'Github', 'Linkedin'],
+}
