@@ -3,31 +3,33 @@ import Link from 'next/link'
 import { DraftingCompassIcon } from 'lucide-react'
 
 import { footerLinks } from '@/config/nav'
+import type { NavItemWithChildren } from '@/types/nav'
+
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
 
 interface LinkListProps {
   title: string
-  links: string[]
+  items?: NavItemWithChildren[]
 }
 
 /**
  * Renders a titled list of navigation links.
  */
-function LinkList({ title, links }: LinkListProps) {
+function LinkList({ title, items }: LinkListProps) {
   return (
     <section className="space-y-3">
       <h4 className="font-semibold">{title}</h4>
 
       <ul className="space-y-4 font-mono text-muted-foreground">
-        {links.map(label => (
-          <li key={label}>
+        {items?.map(item => (
+          <li key={item.title}>
             <Link
-              href="#"
+              href={item.href ?? '#'}
               className="underline-offset-4 transition-colors hover:text-zinc-300 hover:underline"
             >
-              {label}
+              {item.title}
             </Link>
           </li>
         ))}
@@ -65,8 +67,12 @@ export function SiteFooter() {
         {/* links nav */}
         <nav className="flex flex-col gap-10 md:flex-row md:gap-0">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-            {Object.entries(footerLinks).map(([title, links]) => (
-              <LinkList key={title} title={title} links={links} />
+            {footerLinks.map(section => (
+              <LinkList
+                key={section.title}
+                title={section.title}
+                items={section.items}
+              />
             ))}
           </div>
 
@@ -78,7 +84,7 @@ export function SiteFooter() {
               className="flex items-center gap-2 font-mono"
             >
               <span className="relative flex size-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75 duration-500" />
                 <span className="relative inline-flex size-2.5 rounded-full bg-green-500" />
               </span>
               v1.0
