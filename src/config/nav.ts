@@ -1,4 +1,4 @@
-import type { MainNavItem, SidebarNavItem } from '@/types/nav'
+import type { FooterNavItem, MainNavItem, SidebarNavItem } from '@/types/nav'
 
 export interface NavSite {
   main: MainNavItem[]
@@ -126,8 +126,33 @@ export const navSite: NavSite = {
  * Footer navigation links grouped by section title.
  * Each link has a label and optional href.
  */
-export const footerLinks = {
-  Explore: ['Components', 'Animations', 'Utils', 'Patterns'],
-  'Behind sketch.ig': ['About me', 'What is this?', 'GitHub', 'Faq'],
-  'Find me': ['Me', 'Github', 'Linkedin'],
-}
+export const footerLinks: FooterNavItem[] = [
+  {
+    title: 'Explore',
+    items: [
+      { title: 'Components', href: '#' },
+      { title: 'Animations', href: '#' },
+      { title: 'Utils', href: '#' },
+      { title: 'Patterns', href: '#' },
+    ],
+  },
+
+  {
+    title: 'Behind sketch.ig',
+    items: [
+      { title: 'About me', href: '#' },
+      { title: 'What is this?', href: '#' },
+      { title: 'GitHub', href: '#' },
+      { title: 'Faq', href: '#' },
+    ],
+  },
+
+  {
+    title: 'Find me',
+    items: [
+      { title: 'Me', href: '#' },
+      { title: 'Github', href: '#' },
+      { title: 'Linkedin', href: '#' },
+    ],
+  },
+]

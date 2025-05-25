@@ -38,3 +38,9 @@ export interface MainNavItem extends NavItem {}
  * Extends the NavItem interface.
  */
 export interface SidebarNavItem extends NavItemWithChildren {}
+
+/**
+ * Footer-specific navigation item.
+ * Inherits all properties from NavItemWithChildren.
+ */
+export interface FooterNavItem extends NavItemWithChildren {}
