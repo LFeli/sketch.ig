@@ -15,11 +15,6 @@ export const mainNav: MainNavItem[] = [
   },
 
   {
-    title: 'Features',
-    href: '/features',
-  },
-
-  {
     title: 'Docs',
     href: '/docs',
   },
