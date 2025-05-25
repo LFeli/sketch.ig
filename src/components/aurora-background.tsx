@@ -13,7 +13,7 @@ interface AuroraBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
  * Allows customization of styles and classes applied to the aurora effect container.
  *
  * @param {AuroraBackgroundProps} props - Component props.
- * @returns {JSX.Element} The aurora background wrapper with children.
+ * @returns The aurora background wrapper with children.
  */
 export function AuroraBackground({
   children,
@@ -24,22 +24,22 @@ export function AuroraBackground({
   ...props
 }: AuroraBackgroundProps) {
   return (
-    <div
+    <section
       className={cn(
         'relative flex h-[100vh] flex-col items-center justify-center bg-zinc-50 text-slate-950 transition-bg dark:bg-zinc-900',
         className
       )}
       {...props}
     >
-      <div className="absolute inset-0 overflow-hidden" style={auroraStyle}>
+      <div className="absolute inset-0 m-0 overflow-hidden" style={auroraStyle}>
         <div
           className={cn(auroraClassName, {
-            '[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]':
+            '[mask-image:radial-gradient(ellipse_at_100%_0%,black_0%,var(--transparent)_100%)]':
               showRadialGradient,
           })}
         />
       </div>
       {children}
-    </div>
+    </section>
   )
 }
