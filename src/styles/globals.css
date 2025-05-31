@@ -77,6 +77,9 @@
   --color-eerie-black: #171717;
   --color-silver-chalice: #ababab00;
 
+  /* blur */
+  --blur-3xl: 32px;
+
   /* animation */
   --animate-aurora: aurora 60s linear infinite;
 
