@@ -47,7 +47,7 @@ function CommandDialog({
         <DialogTitle>{title}</DialogTitle>
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
-      <DialogContent className="overflow-hidden bg-transparent p-0">
+      <DialogContent className="overflow-hidden rounded-xl bg-transparent p-0">
         <Command
           className={cn(
             'bg-background/30 backdrop-blur-3xl backdrop-opacity-80',
