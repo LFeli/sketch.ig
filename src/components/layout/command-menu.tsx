@@ -5,15 +5,18 @@ import { useRouter } from 'next/navigation'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
+  BadgeCheckIcon,
   CircleDashed,
   CornerDownLeftIcon,
+  ScanIcon,
   SearchIcon,
 } from 'lucide-react'
 import React from 'react'
 
-import { navSite } from '@/config/nav'
+import { footerLinks, navSite } from '@/config/nav'
 import { cn } from '@/lib/utils'
 
+import { span } from 'motion/react-client'
 import { Button } from '../ui/button'
 import {
   CommandDialog,
@@ -67,6 +70,8 @@ export function CommandMenu() {
     command()
   }, [])
 
+  console.log(navSite.social)
+
   return (
     <React.Fragment>
       {/* command trigger */}
@@ -91,11 +96,12 @@ export function CommandMenu() {
         <CommandList className="max-h-[calc(60vh-48px)] overflow-y-auto">
           <CommandEmpty>No results found.</CommandEmpty>
 
+          {/* sidebar links render */}
           {navSite.sidebar.map(group => (
             <CommandGroup key={group.title} heading={group.title}>
               {group.items?.map(item => (
                 <CommandItem
-                  key={item.href}
+                  key={item.title}
                   value={item.title}
                   onSelect={() => {
                     runCommand(() => router.push(item.href as string))
@@ -111,8 +117,46 @@ export function CommandMenu() {
               ))}
             </CommandGroup>
           ))}
+
+          {/* social links render */}
+          <CommandGroup heading="Find me">
+            {navSite.social.map(item => (
+              <CommandItem
+                key={item.title}
+                value={item.title}
+                onSelect={() => {
+                  runCommand(() => router.push(item.href as string))
+                }}
+                className="data-[selected=true]:bg-primary/80"
+                asChild
+              >
+                <span className="flex items-center gap-3">
+                  <BadgeCheckIcon />
+                  {item.title}
+                </span>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+
+          {/* others links render */}
+          <CommandGroup heading="Others">
+            <CommandItem
+              value={'changelog'}
+              onSelect={() => {
+                runCommand(() => router.push('/changelog'))
+              }}
+              className="data-[selected=true]:bg-primary/80"
+              asChild
+            >
+              <span className="flex items-center gap-3">
+                <ScanIcon />
+                Changelog
+              </span>
+            </CommandItem>
+          </CommandGroup>
         </CommandList>
 
+        {/* command footer */}
         <footer className="inset-x-0 bottom-0 z-20 flex h-12 items-center gap-4 rounded-b-xl px-4 py-3 font-medium text-muted-foreground text-xs backdrop-blur-sm backdrop-opacity-80 dark:bg-neutral-800/50">
           <div className="flex items-center gap-2">
             <CommandMenuKbd>
