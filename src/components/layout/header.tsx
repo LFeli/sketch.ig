@@ -4,6 +4,7 @@ import { mainNav } from '@/config/nav'
 import { animationItem } from '@/constants/animation'
 import { DraftingCompassIcon, MoveUpRightIcon, SearchIcon } from 'lucide-react'
 import Link from 'next/link'
+import { CommandMenu } from '../command-menu'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
 
@@ -34,9 +35,7 @@ export function SiteHeader() {
               </li>
             ))}
 
-            <Button type="button" variant={'ghost'} className="text-xs">
-              <SearchIcon className="size-3" />
-            </Button>
+            <CommandMenu />
 
             <Link href={'/'}>
               <Button type="button" variant={'secondary'} className="text-xs">
