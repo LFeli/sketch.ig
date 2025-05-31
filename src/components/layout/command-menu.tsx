@@ -2,10 +2,17 @@
 
 import { useRouter } from 'next/navigation'
 
-import { CircleDashed, SearchIcon } from 'lucide-react'
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CircleDashed,
+  CornerDownLeftIcon,
+  SearchIcon,
+} from 'lucide-react'
 import React from 'react'
 
 import { navSite } from '@/config/nav'
+import { cn } from '@/lib/utils'
 
 import { Button } from '../ui/button'
 import {
@@ -16,6 +23,7 @@ import {
   CommandItem,
   CommandList,
 } from '../ui/command'
+import { Separator } from '../ui/separator'
 
 export function CommandMenu() {
   const router = useRouter()
@@ -72,7 +80,12 @@ export function CommandMenu() {
       </Button>
 
       {/* command */}
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="Search documentation..."
+        description="Search for a command to run..."
+      >
         <CommandInput placeholder="Type a command or search" />
 
         <CommandList className="max-h-[calc(60vh-48px)] overflow-y-auto">
@@ -99,7 +112,52 @@ export function CommandMenu() {
             </CommandGroup>
           ))}
         </CommandList>
+
+        <footer className="inset-x-0 bottom-0 z-20 flex h-12 items-center gap-4 rounded-b-xl px-4 py-3 font-medium text-muted-foreground text-xs backdrop-blur-sm backdrop-opacity-80 dark:bg-neutral-800/50">
+          <div className="flex items-center gap-2">
+            <CommandMenuKbd>
+              <CornerDownLeftIcon />
+            </CommandMenuKbd>
+
+            <span className="font-mono">Go to page</span>
+          </div>
+
+          <Separator orientation="vertical" className="ml-2 hidden lg:block" />
+
+          <div className="flex items-center gap-2">
+            <div className="flex gap-0.5">
+              <CommandMenuKbd>
+                <ArrowUpIcon />
+              </CommandMenuKbd>
+
+              <CommandMenuKbd>
+                <ArrowDownIcon />
+              </CommandMenuKbd>
+            </div>
+
+            <span className="font-mono">Navigate</span>
+          </div>
+        </footer>
       </CommandDialog>
     </React.Fragment>
+  )
+}
+
+/**
+ * Renders a styled <kbd> element for displaying keyboard shortcuts
+ * in the command menu.
+ *
+ * @param {React.ComponentProps<'kbd'>} props - Props passed to the <kbd> element.
+ * @returns {JSX.Element} The styled <kbd> element.
+ */
+function CommandMenuKbd({ className, ...props }: React.ComponentProps<'kbd'>) {
+  return (
+    <kbd
+      className={cn(
+        'pointer-events-none flex h-5 select-none items-center justify-center gap-1 rounded border bg-background px-1 font-medium font-sans text-[0.7rem] text-muted-foreground [&_svg:not([class*="size-"])]:size-3',
+        className
+      )}
+      {...props}
+    />
   )
 }
