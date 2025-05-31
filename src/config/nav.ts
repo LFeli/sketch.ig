@@ -57,7 +57,7 @@ export const sidebarNav: SidebarNavItem[] = [
     title: 'Components',
     items: [
       {
-        title: 'Working...',
+        title: 'Working in components...',
         items: [],
       },
     ],
@@ -67,7 +67,7 @@ export const sidebarNav: SidebarNavItem[] = [
     title: 'Animations',
     items: [
       {
-        title: 'Working...',
+        title: 'Working in animations...',
         items: [],
       },
     ],
@@ -77,7 +77,7 @@ export const sidebarNav: SidebarNavItem[] = [
     title: 'Utils',
     items: [
       {
-        title: 'Working...',
+        title: 'Working in utils...',
         items: [],
       },
     ],
@@ -87,7 +87,7 @@ export const sidebarNav: SidebarNavItem[] = [
     title: 'Patterns',
     items: [
       {
-        title: 'Working...',
+        title: 'Working in patterns...',
         items: [],
       },
     ],
@@ -97,7 +97,7 @@ export const sidebarNav: SidebarNavItem[] = [
     title: 'Ideas',
     items: [
       {
-        title: 'Working...',
+        title: 'Working in ideas...',
         items: [],
       },
     ],
