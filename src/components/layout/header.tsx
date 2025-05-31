@@ -1,12 +1,14 @@
 'use client'
 
-import { mainNav } from '@/config/nav'
-import { animationItem } from '@/constants/animation'
-import { DraftingCompassIcon, MoveUpRightIcon, SearchIcon } from 'lucide-react'
 import Link from 'next/link'
-import { CommandMenu } from '../command-menu'
+
+import { DraftingCompassIcon, MoveUpRightIcon } from 'lucide-react'
+
+import { mainNav } from '@/config/nav'
+
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
+import { CommandMenu } from './command-menu'
 
 export function SiteHeader() {
   return (

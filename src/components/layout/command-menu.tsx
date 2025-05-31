@@ -1,11 +1,13 @@
 'use client'
 
-import { SearchIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+
+import { CircleDashed, SearchIcon } from 'lucide-react'
 import React from 'react'
 
 import { navSite } from '@/config/nav'
-import { useRouter } from 'next/navigation'
-import { Button } from './ui/button'
+
+import { Button } from '../ui/button'
 import {
   CommandDialog,
   CommandEmpty,
@@ -13,7 +15,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from './ui/command'
+} from '../ui/command'
 
 export function CommandMenu() {
   const router = useRouter()
@@ -73,10 +75,10 @@ export function CommandMenu() {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search" />
 
-        <CommandList>
+        <CommandList className="max-h-[calc(60vh-48px)] overflow-y-auto">
           <CommandEmpty>No results found.</CommandEmpty>
 
-          {navSite.sidebar.map((group, index) => (
+          {navSite.sidebar.map(group => (
             <CommandGroup key={group.title} heading={group.title}>
               {group.items?.map(item => (
                 <CommandItem
@@ -85,8 +87,13 @@ export function CommandMenu() {
                   onSelect={() => {
                     runCommand(() => router.push(item.href as string))
                   }}
+                  className="data-[selected=true]:bg-primary/80"
+                  asChild
                 >
-                  {item.title}
+                  <span className="flex items-center gap-3">
+                    <CircleDashed />
+                    {item.title}
+                  </span>
                 </CommandItem>
               ))}
             </CommandGroup>
