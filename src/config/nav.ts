@@ -3,6 +3,7 @@ import type { FooterNavItem, MainNavItem, SidebarNavItem } from '@/types/nav'
 export interface NavSite {
   main: MainNavItem[]
   sidebar: SidebarNavItem[]
+  social: FooterNavItem[]
 }
 
 /**
@@ -105,19 +106,6 @@ export const sidebarNav: SidebarNavItem[] = [
 ]
 
 /**
- * The navSite object contains the main and sidebar navigation items for the application.
- * It is structured to provide easy access to both navigation types.
- *
- * @type {NavSite}
- * @property {MainNavItem[]} main - The main navigation items.
- * @property {SidebarNavItem[]} sidebar - The sidebar navigation items.
- */
-export const navSite: NavSite = {
-  main: mainNav,
-  sidebar: sidebarNav,
-}
-
-/**
  * Footer navigation links grouped by section title.
  * Each link has a label and optional href.
  */
@@ -145,9 +133,23 @@ export const footerLinks: FooterNavItem[] = [
   {
     title: 'Find me',
     items: [
-      { title: 'Me', href: '#' },
-      { title: 'Github', href: '#' },
-      { title: 'Linkedin', href: '#' },
+      { title: 'Me', href: 'https://www.linkedin.com/in/lf-araujo/#' },
+      { title: 'Github', href: 'https://github.com/LFeli' },
+      { title: 'Linkedin', href: 'https://www.linkedin.com/in/lf-araujo/' },
     ],
   },
 ]
+
+/**
+ * The navSite object contains the main and sidebar navigation items for the application.
+ * It is structured to provide easy access to both navigation types.
+ *
+ * @type {NavSite}
+ * @property {MainNavItem[]} main - The main navigation items.
+ * @property {SidebarNavItem[]} sidebar - The sidebar navigation items.
+ */
+export const navSite: NavSite = {
+  main: mainNav,
+  sidebar: sidebarNav,
+  social: footerLinks.find(section => section.title === 'Find me')?.items ?? [],
+}
