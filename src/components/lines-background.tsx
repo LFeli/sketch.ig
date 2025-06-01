@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 
 interface SvgOptions {
   duration?: number
+  colors?: string[]
 }
 
 interface LinesBackgroundProps {
@@ -53,7 +54,7 @@ function Svg({ svgOptions }: { svgOptions?: SvgOptions }) {
           variants={pathVariants}
           initial="initial"
           animate="animate"
-          stroke={linesColors[index]}
+          stroke={svgOptions?.colors?.[index] ?? linesColors[index]}
           strokeWidth="2.3"
           strokeLinecap="round"
           transition={{
