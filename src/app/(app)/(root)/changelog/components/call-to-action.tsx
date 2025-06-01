@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react'
 
+import { LinesBackground } from '@/components/lines-background'
 import { animationContainer, animationItem } from '@/constants/animation'
 
 /**
@@ -10,6 +11,29 @@ import { animationContainer, animationItem } from '@/constants/animation'
 const gradientStyle = {
   background: 'radial-gradient(50% 68% at 50% 100%, #171717, #ababab00)',
 }
+
+const colors = [
+  '#fff1f2',
+  '#ffe4e6',
+  '#fecdd3',
+  '#fda4af',
+  '#fb7185',
+  '#f43f5e',
+  '#e11d48',
+  '#be123c',
+  '#f5f3ff',
+  '#ede9fe',
+  '#ddd6fe',
+  '#c4b5fd',
+  '#a78bfa',
+  '#8b5cf6',
+  '#7c3aed',
+  '#6b21a8',
+  '#eff6ff',
+  '#dbeafe',
+  '#93c5fd',
+  '#3b82f6',
+]
 
 export function ChangelogCallToAction() {
   return (
@@ -20,7 +44,10 @@ export function ChangelogCallToAction() {
       variants={animationContainer}
     >
       <section className="relative flex min-h-screen flex-col items-center justify-center space-y-4 overflow-hidden px-4 py-16 lg:py-24">
-        <div className="flex w-full flex-col items-center justify-center space-y-4 px-4">
+        <LinesBackground
+          svgOptions={{ duration: 5, colors }}
+          className="flex w-full flex-col items-center justify-center space-y-4 px-4"
+        >
           <motion.h1
             variants={animationItem}
             className="relative z-10 bg-gradient-to-b from-neutral-900 to-neutral-700 bg-clip-text text-center font-bold font-sans text-4xl text-transparent leading-tight tracking-tight md:text-5xl lg:text-7xl dark:from-neutral-600 dark:to-white"
@@ -36,7 +63,7 @@ export function ChangelogCallToAction() {
             open journal of messy changes, tiny wins, and wild ideas inside my
             personal playground.
           </motion.p>
-        </div>
+        </LinesBackground>
 
         {/* Decorative background element with a radial gradient. */}
         <div
