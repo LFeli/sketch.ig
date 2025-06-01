@@ -13,10 +13,9 @@ import {
 } from 'lucide-react'
 import React from 'react'
 
-import { footerLinks, navSite } from '@/config/nav'
+import { navSite } from '@/config/nav'
 import { cn } from '@/lib/utils'
 
-import { span } from 'motion/react-client'
 import { Button } from '../ui/button'
 import {
   CommandDialog,
@@ -70,8 +69,6 @@ export function CommandMenu() {
     command()
   }, [])
 
-  console.log(navSite.social)
-
   return (
     <React.Fragment>
       {/* command trigger */}
@@ -93,7 +90,7 @@ export function CommandMenu() {
       >
         <CommandInput placeholder="Type a command or search" />
 
-        <CommandList className="max-h-[calc(60vh-48px)] overflow-y-auto">
+        <CommandList className="max-h-[calc(45vh-48px)] overflow-y-auto">
           <CommandEmpty>No results found.</CommandEmpty>
 
           {/* sidebar links render */}
