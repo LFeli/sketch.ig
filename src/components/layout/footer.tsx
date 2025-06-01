@@ -82,12 +82,15 @@ export function SiteFooter() {
             <Button
               variant="ghost"
               className="flex items-center gap-2 font-mono"
+              asChild
             >
-              <span className="relative flex size-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75 duration-500" />
-                <span className="relative inline-flex size-2.5 rounded-full bg-green-500" />
-              </span>
-              v1.0
+              <Link href={'/changelog'}>
+                <span className="relative flex size-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75 duration-500" />
+                  <span className="relative inline-flex size-2.5 rounded-full bg-green-500" />
+                </span>
+                v1.0
+              </Link>
             </Button>
           </section>
         </nav>
