@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+
 import { animationItem } from '@/constants/animation'
 
 interface Card {

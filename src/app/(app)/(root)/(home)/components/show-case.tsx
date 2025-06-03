@@ -1,18 +1,15 @@
 'use client'
 
-import {
-  GithubIcon,
-  LightbulbIcon,
-  MoveUpRightIcon,
-  SparklesIcon,
-} from 'lucide-react'
+import Link from 'next/link'
+
+import { LightbulbIcon, MoveUpRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
 import { Badge } from '@/components/ui/badge'
-
 import { Button } from '@/components/ui/button'
+
 import { animationContainer, animationItem } from '@/constants/animation'
-import Link from 'next/link'
+
 import { ShowCaseBento } from './show-case-bento'
 
 export function Showcase() {

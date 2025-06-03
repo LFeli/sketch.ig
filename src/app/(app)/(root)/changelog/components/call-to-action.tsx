@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { motion } from 'motion/react'
 
-import { LinesBackground } from '@/components/lines-background'
+import { LinesBackground } from '@/components/effects/lines-background'
 import { Button } from '@/components/ui/button'
 
 import { animationContainer, animationItem } from '@/constants/animation'

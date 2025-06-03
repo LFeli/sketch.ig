@@ -1,10 +1,11 @@
 'use client'
 
+import { SparklesIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
 import { Badge } from '@/components/ui/badge'
 import { animationContainer, animationItem } from '@/constants/animation'
-import { SparklesIcon } from 'lucide-react'
+
 import { FeaturesCards } from './features-cards'
 
 export function Features() {

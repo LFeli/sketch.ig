@@ -5,10 +5,11 @@ import Link from 'next/link'
 import { DraftingCompassIcon, MoveUpRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
-import { FlipWords } from '@/components/flip-words'
-import { LinesBackground } from '@/components/lines-background'
+import { FlipWords } from '@/components/animations/flip-words'
+import { LinesBackground } from '@/components/effects/lines-background'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+
 import { animationContainer, animationItem } from '@/constants/animation'
 
 /**

@@ -1,12 +1,14 @@
 'use client'
 
+import Link from 'next/link'
+
+import { MoveUpRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
-import { AuroraBackground } from '@/components/aurora-background'
+import { AuroraBackground } from '@/components/effects/aurora-background'
 import { Button } from '@/components/ui/button'
+
 import { animationContainer, animationItem } from '@/constants/animation'
-import { MoveUpRightIcon } from 'lucide-react'
-import Link from 'next/link'
 
 export function Banner() {
   return (

@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 import { motion } from 'motion/react'
 
-import { BentoGrid } from '@/components/bento-grid'
+import { BentoGrid } from '@/components/blocks/bento-grid'
 
 import { animationItem } from '@/constants/animation'
 import { cn } from '@/lib/utils'

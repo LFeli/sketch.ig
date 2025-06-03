@@ -3,7 +3,7 @@
 import { InfinityIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
-import { BeamsBackground } from '@/components/beams-background'
+import { BeamsBackground } from '@/components/effects/beams-background'
 import { Badge } from '@/components/ui/badge'
 
 import { animationContainer, animationItem } from '@/constants/animation'

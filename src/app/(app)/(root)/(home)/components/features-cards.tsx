@@ -2,7 +2,6 @@
 
 import {
   BrainCircuitIcon,
-  BrickWallIcon,
   BrushIcon,
   type LucideIcon,
   PackageIcon,
