@@ -1,9 +1,24 @@
 'use client'
 
+import Link from 'next/link'
+
 import { motion } from 'motion/react'
 
 import { LinesBackground } from '@/components/lines-background'
+import { Button } from '@/components/ui/button'
+
 import { animationContainer, animationItem } from '@/constants/animation'
+
+/**
+ * A list of phrase pairs to be animated in sequence.
+ */
+const flipWords = [
+  'Learn & Apply',
+  'Think & Code',
+  'Design & Iterate',
+  'Break & Build',
+  'Write & Refactor',
+]
 
 /**
  * Inline style object for a radial background gradient.
@@ -12,6 +27,10 @@ const gradientStyle = {
   background: 'radial-gradient(50% 68% at 50% 100%, #171717, #ababab00)',
 }
 
+/**
+ * Array of hex color codes, representing a palette of soft pastel and vibrant tones.
+ * @type {string[]}
+ */
 const colors = [
   '#fff1f2',
   '#ffe4e6',
@@ -43,7 +62,7 @@ export function ChangelogCallToAction() {
       viewport={{ once: true, amount: 0.2 }}
       variants={animationContainer}
     >
-      <section className="relative flex min-h-screen flex-col items-center justify-center space-y-4 overflow-hidden px-4 py-16 lg:py-24">
+      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
         <LinesBackground
           svgOptions={{ duration: 5, colors }}
           className="flex w-full flex-col items-center justify-center space-y-4 px-4"
@@ -63,6 +82,21 @@ export function ChangelogCallToAction() {
             open journal of messy changes, tiny wins, and wild ideas inside my
             personal playground.
           </motion.p>
+
+          {/* Call to action buttons */}
+          <motion.div
+            variants={animationItem}
+            className="z-10 flex items-center gap-2.5 pt-2"
+          >
+            <Button
+              type="button"
+              variant={'secondary'}
+              className="h-10"
+              asChild
+            >
+              <Link href={'#'}>See more below</Link>
+            </Button>
+          </motion.div>
         </LinesBackground>
 
         {/* Decorative background element with a radial gradient. */}
