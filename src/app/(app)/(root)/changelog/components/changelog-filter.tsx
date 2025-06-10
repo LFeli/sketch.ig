@@ -95,41 +95,46 @@ export function ChangelogFilter({
   }
 
   return (
-    <section aria-label="Changelog filters" className="flex items-center gap-4">
-      {/* search filter */}
-      <motion.div
-        variants={animationItem}
-        className="relative w-full flex-1 md:max-w-2xs"
-      >
-        <label htmlFor="changelog-search">
-          <span className="sr-only">Search changelog</span>
-          <SearchIcon className="absolute top-2.5 left-3 size-4" />
-        </label>
+    <section
+      aria-label="Changelog filters"
+      className="flex flex-col items-center gap-4 md:flex-row"
+    >
+      <div className="flex w-full flex-row items-center gap-4 md:w-fit">
+        {/* search filter */}
+        <motion.div
+          variants={animationItem}
+          className="relative w-full flex-1 md:max-w-2xs"
+        >
+          <label htmlFor="changelog-search">
+            <span className="sr-only">Search changelog</span>
+            <SearchIcon className="absolute top-2.5 left-3 size-4" />
+          </label>
 
-        <Input
-          id="changelog-search"
-          type="search"
-          placeholder="Searching in changelog..."
-          className="pl-8.5"
-          value={search}
-          onChange={onSearch}
-        />
-      </motion.div>
+          <Input
+            id="changelog-search"
+            type="search"
+            placeholder="Searching in changelog..."
+            className="pl-8.5"
+            value={search}
+            onChange={onSearch}
+          />
+        </motion.div>
 
-      {/* version filter */}
-      <motion.div variants={animationItem}>
-        <TagsFilter
-          tags={tags}
-          selectedTags={selectedTags}
-          onTagToggle={onTagToggle}
-        />
-      </motion.div>
+        {/* version filter */}
+        <motion.div variants={animationItem}>
+          <TagsFilter
+            tags={tags}
+            selectedTags={selectedTags}
+            onTagToggle={onTagToggle}
+          />
+        </motion.div>
+      </div>
 
       {(search || selectedTags.length > 0) && (
         <Button
           variant="secondary"
           size="sm"
-          className="h-9"
+          className="h-9 w-full md:w-fit"
           onClick={handleResetFilters}
         >
           <XIcon className="mr-1 size-3" />
