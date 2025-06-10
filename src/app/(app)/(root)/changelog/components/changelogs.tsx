@@ -82,29 +82,6 @@ export function ChangeLogs() {
     [entries, selectedTags, search]
   )
 
-  /**
-   * Handles search input changes by updating the search state.
-   *
-   * @param {ChangeEvent<HTMLInputElement>} e - The input change event.
-   */
-  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
-  }
-
-  /**
-   * Toggles a tag in the selected tags state.
-   * Adds the tag if not present, removes it if already selected.
-   *
-   * @param {string} tag - The tag to toggle.
-   */
-  const onTagToggle = (tag: string) => {
-    setSelectedTags(prevTags =>
-      prevTags.includes(tag)
-        ? prevTags.filter(t => t !== tag)
-        : [...prevTags, tag]
-    )
-  }
-
   return (
     <motion.div
       initial="hidden"
@@ -146,10 +123,10 @@ export function ChangeLogs() {
         <div className="w-full max-w-container space-y-6">
           <ChangelogFilter
             search={search}
-            onSearch={onSearch}
+            setSearch={setSearch}
             tags={tags}
             selectedTags={selectedTags}
-            onTagToggle={onTagToggle}
+            setSelectedTags={setSelectedTags}
           />
 
           <ChangelogList entries={filtered} search={search} />

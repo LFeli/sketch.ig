@@ -45,11 +45,11 @@ import { cn } from '@/lib/utils'
 
 interface ChangelogFilterProps {
   search: string
-  onSearch: (search: ChangeEvent<HTMLInputElement>) => void
+  setSearch: React.Dispatch<React.SetStateAction<string>>
 
   tags: string[]
   selectedTags: string[]
-  onTagToggle: (tag: string) => void
+  setSelectedTags: React.Dispatch<React.SetStateAction<string[]>>
 }
 
 interface TagsFilterProps {
@@ -60,12 +60,40 @@ interface TagsFilterProps {
 
 export function ChangelogFilter({
   search,
-  onSearch,
+  setSearch,
 
   tags,
   selectedTags,
-  onTagToggle,
+  setSelectedTags,
 }: ChangelogFilterProps) {
+  /**
+   * Handles search input changes by updating the search state.
+   *
+   * @param {ChangeEvent<HTMLInputElement>} e - The input change event.
+   */
+  const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
+  }
+
+  /**
+   * Toggles a tag in the selected tags state.
+   * Adds the tag if not present, removes it if already selected.
+   *
+   * @param {string} tag - The tag to toggle.
+   */
+  const onTagToggle = (tag: string) => {
+    setSelectedTags(prevTags =>
+      prevTags.includes(tag)
+        ? prevTags.filter(t => t !== tag)
+        : [...prevTags, tag]
+    )
+  }
+
+  const handleResetFilters = () => {
+    setSearch('')
+    setSelectedTags([])
+  }
+
   return (
     <section aria-label="Changelog filters" className="flex items-center gap-4">
       {/* search filter */}
@@ -98,7 +126,12 @@ export function ChangelogFilter({
       </motion.div>
 
       {(search || selectedTags.length > 0) && (
-        <Button variant="secondary" size="sm" className="h-9">
+        <Button
+          variant="secondary"
+          size="sm"
+          className="h-9"
+          onClick={handleResetFilters}
+        >
           <XIcon className="mr-1 size-3" />
           Clear filters
         </Button>
