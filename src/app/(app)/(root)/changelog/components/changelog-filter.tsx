@@ -200,19 +200,6 @@ function TagsFilter({ tags, selectedTags, onTagToggle }: TagsFilterProps) {
       setDrawerOpen(false)
     }
 
-    /**
-     * Clears all selected tags by toggling each off,
-     * resets temporary selection, and closes the drawer.
-     */
-    const resetTags = () => {
-      for (const tag of selectedTags) {
-        onTagToggle(tag)
-      }
-
-      setTempSelectedTags([])
-      setDrawerOpen(false)
-    }
-
     return (
       <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
         <DrawerTrigger asChild>
@@ -231,7 +218,41 @@ function TagsFilter({ tags, selectedTags, onTagToggle }: TagsFilterProps) {
             </DrawerDescription>
           </DrawerHeader>
 
-          <section className="px-4">a</section>
+          <section className="px-4">
+            <Command>
+              <CommandInput placeholder="Search tags..." />
+
+              <CommandList>
+                <CommandEmpty>No results found.</CommandEmpty>
+
+                <CommandGroup>
+                  {tags.map(tag => {
+                    const isSelected = tempSelectedTags.includes(tag)
+
+                    return (
+                      <CommandItem
+                        key={tag}
+                        onSelect={() => toggleTempTag(tag)}
+                      >
+                        <div
+                          className={cn(
+                            'flex size-4 items-center justify-center rounded-[4px] border',
+                            isSelected
+                              ? 'border-primary bg-primary text-primary-foreground'
+                              : 'border-input [&_svg]:invisible'
+                          )}
+                        >
+                          <CheckIcon className="size-3.5 text-primary-foreground" />
+                        </div>
+
+                        <span>{tag}</span>
+                      </CommandItem>
+                    )
+                  })}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </section>
 
           <DrawerFooter className="flex flex-col gap-3">
             <DrawerClose asChild>
