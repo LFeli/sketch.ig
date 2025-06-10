@@ -1,5 +1,4 @@
 import type { ChangelogEntry } from '@/types/changelog'
-import { HighlightedText } from '@/utils/highlighted-text'
 
 interface ChangelogListProps {
   entries: ChangelogEntry[]
