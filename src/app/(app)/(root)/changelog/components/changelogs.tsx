@@ -1,6 +1,6 @@
 'use client'
 
-import { LogsIcon } from 'lucide-react'
+import { LogsIcon, XIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import React, { type ChangeEvent } from 'react'
 
@@ -10,6 +10,7 @@ import { animationContainer, animationItem } from '@/constants/animation'
 import { changelogEntires } from '@/mock/changelog'
 import type { ChangelogEntry } from '@/types/changelog'
 
+import { Button } from '@/components/ui/button'
 import { ChangelogFilter } from './changelog-filter'
 import { ChangelogList } from './changelog-list'
 
@@ -17,37 +18,32 @@ import { ChangelogList } from './changelog-list'
  * Filters a list of changelog entries based on version, tags, and a search term.
  *
  * @param {ChangelogEntry[]} entries - The list of changelog entries to filter.
- * @param {string | null} version - The version to filter by, or null to include all versions.
  * @param {string[]} tags - An array of tags that must all be present in the entry.
  * @param {string} search - A search term to match against entry titles and descriptions.
  * @returns {ChangelogEntry[]} The filtered list of changelog entries.
  */
 function filterEntries(
   entries: ChangelogEntry[],
-  version: string | null,
   tags: string[],
   search: string
 ) {
   const searchTerm = search.toLowerCase()
 
   return entries.filter(entry => {
-    const matchesVersion = !version || entry.version === version
     const matchesTags =
       tags.length === 0 || tags.every(tag => entry.tags.includes(tag))
+
     const matchesSearch =
       !search ||
       entry.title.toLowerCase().includes(searchTerm) ||
       entry.description.toLowerCase().includes(searchTerm)
 
-    return matchesVersion && matchesTags && matchesSearch
+    return matchesTags && matchesSearch
   })
 }
 
 export function ChangeLogs() {
   const [search, setSearch] = React.useState('')
-  const [selectedVersion, setSelectedVersion] = React.useState<string | null>(
-    null
-  )
   const [selectedTags, setSelectedTags] = React.useState<string[]>([])
 
   const entries = changelogEntires
@@ -82,8 +78,8 @@ export function ChangeLogs() {
    * @type {ChangelogEntry[]}
    */
   const filtered = React.useMemo(
-    () => filterEntries(entries, selectedVersion, selectedTags, search),
-    [entries, selectedVersion, selectedTags, search]
+    () => filterEntries(entries, selectedTags, search),
+    [entries, selectedTags, search]
   )
 
   /**
@@ -93,15 +89,6 @@ export function ChangeLogs() {
    */
   const onSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
-  }
-
-  /**
-   * Handles version select changes by updating the selected version state.
-   *
-   * @param {ChangeEvent<HTMLSelectElement>} e - The select change event.
-   */
-  const onVersionChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedVersion(e.target.value || null)
   }
 
   /**
@@ -157,7 +144,13 @@ export function ChangeLogs() {
         </header>
 
         <div className="w-full max-w-container space-y-6">
-          <ChangelogFilter />
+          <ChangelogFilter
+            search={search}
+            onSearch={onSearch}
+            tags={tags}
+            selectedTags={selectedTags}
+            onTagToggle={onTagToggle}
+          />
 
           <ChangelogList entries={filtered} search={search} />
         </div>
