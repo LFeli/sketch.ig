@@ -129,7 +129,9 @@ export function ChangeLogs() {
             setSelectedTags={setSelectedTags}
           />
 
-          <ChangelogList entries={filtered} search={search} />
+          <motion.div className="min-h-96" variants={animationItem}>
+            <ChangelogList entries={filtered} search={search} />
+          </motion.div>
         </div>
 
         <footer className="mx-auto max-w-xl pt-8 text-center font-mono text-neutral-700 text-xs lg:text-sm dark:text-neutral-400">
