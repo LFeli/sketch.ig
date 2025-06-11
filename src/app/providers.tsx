@@ -9,6 +9,7 @@ export function Providers({
     <ThemeProvider
       attribute={'class'}
       defaultTheme="dark"
+      forcedTheme="dark"
       enableSystem={true}
       disableTransitionOnChange
     >
