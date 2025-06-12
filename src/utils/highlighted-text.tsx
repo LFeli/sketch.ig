@@ -43,7 +43,7 @@ export function HighlightedText({ text, search }: HighlightedTextProps) {
     <React.Fragment>
       {parts.map((part, index) =>
         searchRegex.test(part) ? (
-          <mark key={index} className="bg-yellow-200 text-yellow-900">
+          <mark key={index} className="bg-rose-200 text-rose-900">
             {part}
           </mark>
         ) : (
