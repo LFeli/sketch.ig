@@ -1,6 +1,11 @@
+import { Sparkles, Tag } from 'lucide-react'
 import { motion } from 'motion/react'
 
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/components/ui/card'
+
 import type { ChangelogEntry } from '@/types/changelog'
+import { HighlightedText } from '@/utils/highlighted-text'
 
 interface ChangelogListProps {
   entries: ChangelogEntry[]
@@ -36,13 +41,15 @@ const entryReveal = {
 }
 
 /**
- * Groups changelog entries by their date property.
+ * Groups changelog entries by their date property and sorts them in descending order.
  *
  * @param {ChangelogEntry[]} entries - Array of changelog entries to group.
- * @returns {Record<string, ChangelogEntry[]>} An object mapping dates to arrays of entries.
+ * @returns {Record<string, ChangelogEntry[]>} An object mapping dates to arrays of entries, sorted by date DESC.
  */
-function groupByDate(entries: ChangelogEntry[]) {
-  return entries.reduce(
+function groupByDate(
+  entries: ChangelogEntry[]
+): Record<string, ChangelogEntry[]> {
+  const grouped = entries.reduce(
     (acc, entry) => {
       acc[entry.date] = acc[entry.date] || []
       acc[entry.date].push(entry)
@@ -50,6 +57,17 @@ function groupByDate(entries: ChangelogEntry[]) {
     },
     {} as Record<string, ChangelogEntry[]>
   )
+
+  const sortedEntries: Record<string, ChangelogEntry[]> = {}
+  const sortedDates = Object.keys(grouped).sort(
+    (a, b) => new Date(b).getTime() - new Date(a).getTime()
+  )
+
+  for (const date of sortedDates) {
+    sortedEntries[date] = grouped[date]
+  }
+
+  return sortedEntries
 }
 
 export function ChangelogList({ entries, search }: ChangelogListProps) {
@@ -86,15 +104,60 @@ export function ChangelogList({ entries, search }: ChangelogListProps) {
       {Object.entries(grouped).map(([date, group]) => (
         <motion.section
           key={date}
-          className="grid grid-cols-1 gap-4 md:grid-cols-5"
+          className="flex flex-col gap-8 md:flex-row"
           variants={entryReveal}
         >
-          <span className="col-span-1 font-mono text-gray-600 text-sm">
+          <Badge
+            variant={'secondary'}
+            className="col-span-1 h-fit px-2 py-1 font-mono text-muted-foreground text-sm"
+          >
             {date}
-          </span>
-          <div className="col-span-4 space-y-4">
+          </Badge>
+
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
             {group.map(entry => (
-              <motion.div key={entry.id}>changelog item here.</motion.div>
+              <Card
+                key={entry.id}
+                className="rounded-2xl border border-border shadow-sm"
+              >
+                <CardContent className="space-y-2 px-4 py-2">
+                  <header className="flex items-center justify-between">
+                    <time
+                      className="font-mono text-muted-foreground text-xs"
+                      dateTime={`v${entry.version}`}
+                      aria-label={`Version ${entry.version}`}
+                    >
+                      v{entry.version}
+                    </time>
+
+                    <Sparkles className="h-4 w-4 text-yellow-500" />
+                  </header>
+
+                  <h3 className="font-semibold text-base">
+                    {HighlightedText({ text: entry.title, search })}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm">
+                    {HighlightedText({ text: entry.description, search })}
+                  </p>
+
+                  <footer
+                    className="flex flex-wrap gap-2 pt-2"
+                    aria-label="Tags"
+                  >
+                    {entry.tags.map(tag => (
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="flex items-center gap-1 text-xs"
+                      >
+                        <Tag className="h-3 w-3" />
+                        {tag}
+                      </Badge>
+                    ))}
+                  </footer>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </motion.section>
