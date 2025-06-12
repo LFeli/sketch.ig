@@ -163,7 +163,7 @@ function TagsFilter({ tags, selectedTags, onTagToggle }: TagsFilterProps) {
    * when the drawer is opened.
    */
   React.useEffect(() => {
-    if (drawerOpen) {
+    if (!drawerOpen) {
       setTempSelectedTags(selectedTags)
     }
   }, [drawerOpen, selectedTags])
@@ -206,6 +206,15 @@ function TagsFilter({ tags, selectedTags, onTagToggle }: TagsFilterProps) {
           <Button variant={'outline'} className="border-dashed">
             <PlusCircleIcon className="size-4" />
             Tags
+            {tempSelectedTags.length > 0 && (
+              <React.Fragment>
+                <Separator orientation="vertical" className="ml-2 h-3" />
+
+                <Badge variant="secondary" className="ml-2">
+                  {tempSelectedTags.length}
+                </Badge>
+              </React.Fragment>
+            )}
           </Button>
         </DrawerTrigger>
 
@@ -276,6 +285,15 @@ function TagsFilter({ tags, selectedTags, onTagToggle }: TagsFilterProps) {
         <Button variant={'outline'} className="border-dashed">
           <PlusCircleIcon className="size-4" />
           Tags
+          {tempSelectedTags.length > 0 && (
+            <React.Fragment>
+              <Separator orientation="vertical" className="ml-2 h-3" />
+
+              <Badge variant="secondary" className="ml-2">
+                {tempSelectedTags.length} Selected
+              </Badge>
+            </React.Fragment>
+          )}
         </Button>
       </PopoverTrigger>
 
