@@ -5,4 +5,5 @@ export interface ChangelogEntry {
   title: string
   description: string
   tags: string[]
+  type: 'feature' | 'fix' | 'update' | 'breaking'
 }
