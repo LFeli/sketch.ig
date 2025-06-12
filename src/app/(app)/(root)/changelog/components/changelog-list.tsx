@@ -1,9 +1,17 @@
-import { Sparkles, Tag } from 'lucide-react'
+import {
+  AlertTriangle,
+  Bug,
+  type LucideIcon,
+  Sparkles,
+  Tag,
+  Wrench,
+} from 'lucide-react'
 import { motion } from 'motion/react'
 
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 
+import { entryReveal, fadeGroup } from '@/constants/animation'
 import type { ChangelogEntry } from '@/types/changelog'
 import { HighlightedText } from '@/utils/highlighted-text'
 
@@ -13,31 +21,23 @@ interface ChangelogListProps {
 }
 
 /**
- * Animation variant for fading in a group of elements with staggered children.
+ * Maps changelog entry types to their corresponding Lucide icon components.
  */
-const fadeGroup = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      duration: 0.3,
-    },
-  },
+const typeIconMap: Record<ChangelogEntry['type'], LucideIcon> = {
+  feature: Sparkles,
+  fix: Bug,
+  update: Wrench,
+  breaking: AlertTriangle,
 }
 
 /**
- * Animation variant for revealing a single entry with a fade + upward motion.
+ * Maps changelog entry types to corresponding text color CSS classes.
  */
-const entryReveal = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.3,
-    },
-  },
+const typeColorMap: Record<ChangelogEntry['type'], string> = {
+  feature: 'text-yellow-500',
+  fix: 'text-red-500',
+  update: 'text-blue-500',
+  breaking: 'text-orange-600',
 }
 
 /**
@@ -115,50 +115,55 @@ export function ChangelogList({ entries, search }: ChangelogListProps) {
           </Badge>
 
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-            {group.map(entry => (
-              <Card
-                key={entry.id}
-                className="rounded-2xl border border-border shadow-sm"
-              >
-                <CardContent className="space-y-2 px-4 py-2">
-                  <header className="flex items-center justify-between">
-                    <time
-                      className="font-mono text-muted-foreground text-xs"
-                      dateTime={`v${entry.version}`}
-                      aria-label={`Version ${entry.version}`}
-                    >
-                      v{entry.version}
-                    </time>
+            {group.map(entry => {
+              const Icon = typeIconMap[entry.type]
+              const colorClass = typeColorMap[entry.type]
 
-                    <Sparkles className="h-4 w-4 text-yellow-500" />
-                  </header>
-
-                  <h3 className="font-semibold text-base">
-                    {HighlightedText({ text: entry.title, search })}
-                  </h3>
-
-                  <p className="text-muted-foreground text-sm">
-                    {HighlightedText({ text: entry.description, search })}
-                  </p>
-
-                  <footer
-                    className="flex flex-wrap gap-2 pt-2"
-                    aria-label="Tags"
-                  >
-                    {entry.tags.map(tag => (
-                      <Badge
-                        key={tag}
-                        variant="outline"
-                        className="flex items-center gap-1 text-xs"
+              return (
+                <Card
+                  key={entry.id}
+                  className="rounded-2xl border border-border shadow-sm"
+                >
+                  <CardContent className="space-y-2 px-4 py-2">
+                    <header className="flex items-center justify-between">
+                      <time
+                        className="font-mono text-muted-foreground text-xs"
+                        dateTime={`v${entry.version}`}
+                        aria-label={`Version ${entry.version}`}
                       >
-                        <Tag className="h-3 w-3" />
-                        {tag}
-                      </Badge>
-                    ))}
-                  </footer>
-                </CardContent>
-              </Card>
-            ))}
+                        v{entry.version}
+                      </time>
+
+                      <Icon className={`size-4 ${colorClass}`} />
+                    </header>
+
+                    <h3 className="font-semibold text-base">
+                      {HighlightedText({ text: entry.title, search })}
+                    </h3>
+
+                    <p className="text-muted-foreground text-sm">
+                      {HighlightedText({ text: entry.description, search })}
+                    </p>
+
+                    <footer
+                      className="flex flex-wrap gap-2 pt-2"
+                      aria-label="Tags"
+                    >
+                      {entry.tags.map(tag => (
+                        <Badge
+                          key={tag}
+                          variant="outline"
+                          className="flex items-center gap-1 text-xs"
+                        >
+                          <Tag className="h-3 w-3" />
+                          {tag}
+                        </Badge>
+                      ))}
+                    </footer>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </motion.section>
       ))}
