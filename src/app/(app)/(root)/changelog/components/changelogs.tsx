@@ -1,16 +1,15 @@
 'use client'
 
-import { LogsIcon, XIcon } from 'lucide-react'
+import { LogsIcon } from 'lucide-react'
 import { motion } from 'motion/react'
-import React, { type ChangeEvent } from 'react'
+import React from 'react'
 
 import { Badge } from '@/components/ui/badge'
 
 import { animationContainer, animationItem } from '@/constants/animation'
-import { changelogEntires } from '@/mock/changelog'
+import { changelogEntries } from '@/mock/changelog'
 import type { ChangelogEntry } from '@/types/changelog'
 
-import { Button } from '@/components/ui/button'
 import { ChangelogFilter } from './changelog-filter'
 import { ChangelogList } from './changelog-list'
 
@@ -46,21 +45,7 @@ export function ChangeLogs() {
   const [search, setSearch] = React.useState('')
   const [selectedTags, setSelectedTags] = React.useState<string[]>([])
 
-  const entries = changelogEntires
-
-  /**
-   * A memoized, sorted array of unique version strings extracted from `entries`.
-   * Versions are sorted in descending lexicographical order.
-   *
-   * @type {string[]}
-   */
-  const versions = React.useMemo(
-    () =>
-      Array.from(new Set(entries.map(e => e.version))).sort((a, b) =>
-        b.localeCompare(a)
-      ),
-    [entries]
-  )
+  const entries = changelogEntries
 
   /**
    * A memoized, sorted array of unique tags extracted from `entries`.
